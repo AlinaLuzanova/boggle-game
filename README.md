@@ -15,7 +15,7 @@
 <!-- markdownlint-disable no-inline-html -->
 <details>
   <summary>Пример игры в Боггл</summary>
-  <img src="files/boggle-mockup.gif" alt="Пример игры в Боггл">
+  <img src="files/boggle-mockup.gif" alt="Пример игры в Боггл" width="400">
 </details>
 <!-- markdownlint-enable no-inline-html -->
 
