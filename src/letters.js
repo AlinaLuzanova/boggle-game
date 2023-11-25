@@ -17,4 +17,4 @@ const letters = [
   ["H", "L", "N", "N", "R", "Z"],
 ];
 
-module.exports = letters;
+export default letters;
