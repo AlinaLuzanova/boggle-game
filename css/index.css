@@ -9,21 +9,22 @@ html{
 
 body{
   background-color: #ffffff;
-  width: 800px;
+  width: 1280px;
   margin: 20px auto;
   border-radius: 18px;
   padding: 20px;
 }
 
 .container{
-  width: 520px;
+  width: 920px;
+  min-height: 520px;
   height: fit-content;
   margin: 0 auto;
   padding: 20px;
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: center;
-  align-items: center;
   background-color: #ffffff;
   border: 1px solid #0000ff;
   border-radius: 10px;
@@ -31,9 +32,50 @@ body{
 }
 
 .play-field{
-  width: 290px;
-  height: fit-content;
+  width: 40%;
+}
+
+.input-container{
+  box-sizing: border-box;
+  width: 100%;
+  height: 36px;
+  position: relative;  
+}
+
+#player-name{
+  box-sizing: border-box;
+  width: 100%;
+  height: 36px;
   border-radius:5px;
+  font-size: 26px;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 23.4px;
+  color: rgb(18, 18, 18, 0.4);
+  padding-left: 20px;
+  border: 1px solid  #111111 ;
+  padding-right: 120px;
+}
+
+.button--add-user{
+    color:#ffffff;
+    background-color: #111111;
+    border: none;
+    font-size: 18px;
+    padding: 0, 12px, 5px, 12px;
+    line-height: 23.4px;
+    height: 26px;
+    position: absolute;
+    right: 8px;
+    bottom: 5px;
+    transition: 500ms;
+    border-radius: 5px;
+}
+
+.button--add-user:hover {
+  background-color: rgb(7, 143, 7);
+    transition: 500ms;
 }
 
 #input-word{
@@ -47,13 +89,14 @@ body{
   padding: 5px;
   line-height: 30px;
   text-transform: uppercase;
+  color: #0a6ebd;
 }
-.button{
-  width: 55px;
-  height: 55px;
+.button--boggle{
+  width: 75px;
+  height: 75px;
   background-color: #FFF;
   color: #000;
-  font-size: 20px;
+  font-size: 34px;
   font-weight: 700;
   text-align: center;
   line-height: 34px;
@@ -63,25 +106,32 @@ body{
   cursor: pointer;
   user-select: none;
   position: relative;
+  z-index: 5;
 }
 
-button::before{
+.button--boggle:hover{
+  background-color: rgb(154, 154, 246);
+}
+
+.button--boggle::before{
   content: "";
   display: block;
   position: absolute;
-  width: 46px;
-  height: 46px;
+  width: 66px;
+  height: 66px;
   background-color: #eee;
   border: 1px solid #CCC;
-  border-radius: 40px;
+  border-radius: 40px;  
   box-shadow: inset 1px 2px 2px #fff;
   left: 1px;
   top: 1px;
-  z-index: 1;
+  z-index: -1;
 }
-.button.pressed{
+
+.button--boggle.pressed{
   background-color: red;
 }
+
 .btn-text{
   position: absolute;
   font-size: 24px;
@@ -92,6 +142,8 @@ button::before{
 
 .boggle{
   width: auto;
+  min-width: 340px;
+  min-height: 340px;
   margin: 0 auto;
   border: 1px solid #000000;
   border-radius: 5px;
@@ -103,9 +155,13 @@ button::before{
   padding: 10px;
 }
 
+.right-container{
+  width: 25%;
+  min-height: 512px;
+}
 .right-words{
   width: 220px;
-  height: 280px;
+  height: 465px;
   margin: 0 auto;
   border: 1px solid #000000;
   border-radius: 2px;
@@ -118,9 +174,38 @@ button::before{
   line-height: 25px;
   color: #0a6ebd;
   box-sizing: border-box;
-    background-color: #EEE;
+  background-color: #EEE;
+  display: flex;
+  border-bottom: 1px solid #000000;
+  padding: 5px;
+}
+
+.word{
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  gap: 10px ;
 }
 
 .clearBtn{
-  align-self: flex-end;
+  margin-top: 20px;
+}
+
+.hi-score{
+  width: 30%;
+  height: 465px;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+}
+
+.longest-words{
+  height: 230px;
+}
+
+.Top-players{
+  height: 230px;
+}
+
+.player-score{
+  justify-content: flex-end;
 }

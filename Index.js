@@ -1,6 +1,6 @@
 import randomLetter from "./js/randomLetter.js";
 
-const btn = document.querySelectorAll(".button");
+const btn = document.querySelectorAll(".button--boggle");
 const clearBtn = document.querySelector(".clearBtn");
 let isGameStart = false;
 
@@ -64,13 +64,14 @@ function selectWord(event) {
       ].addEventListener("mouseover", selectWord);
     }
   }
+  console.log(word);
 }
 
 function hideSelection() {
   const rows = document.querySelectorAll(".boggle .row");
 
   rows.forEach((row) => {
-    const buttons = row.querySelectorAll(".button");
+    const buttons = row.querySelectorAll(".button--boggle");
     buttons.forEach((btn) => {
       btn.classList.remove("pressed");
       word = "";
@@ -80,7 +81,9 @@ function hideSelection() {
 }
 
 // смена букв на кнопках
-
+btn.forEach((btnItem, index) => {
+  btnItem.innerHTML = `${randomLetter(index)}`;
+})
 clearBtn.addEventListener("click", () => {
   if (!isGameStart) {
     btn.forEach((btnItem, index) => {
