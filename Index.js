@@ -132,7 +132,7 @@ clearBtn.addEventListener("click", () => {
 // проверка слова в словаре
 
 // пока попытки работы с API
-let wordGet = "hello"; //сюда нужно вставлять слово из полученного на страничке
+let wordGet = word; //сюда нужно вставлять слово из полученного на страничке
 let arr = []; // сюда пушатся слова если они существуют
 let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${wordGet}`;
 async function fetchData(url) {
