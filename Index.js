@@ -20,12 +20,20 @@ btn.forEach((btn) => {
   btn.addEventListener("mouseup", hideSelection);
 });
 let word = "";
+let selectedElements = [];
 function selectWord(event) {
   isGameStart = true;
 
   const targetElement = event.target;
+
+  if (selectedElements.includes(targetElement)) {
+    return;
+  }
+
   targetElement.classList.add("pressed");
   word += targetElement.innerText;
+  selectedElements.push(targetElement);
+
   const index = Array.from(targetElement.parentElement.children).indexOf(
     targetElement
   );
