@@ -1,79 +1,57 @@
-import randomLetter from "./js/randomLetter.js";
-
-const btn = document.querySelectorAll(".button");
-const clearBtn = document.querySelector(".clearBtn");
-const isGameStart = false;
+const btn = document.querySelectorAll('.button');
+const clearBtn = document.querySelector('.clearBtn');
 
 btn.forEach((btn) => {
-  btn.addEventListener("mousedown", selectWord);
-  //btn.addEventListener('mouseup',hideSelection)
+  btn.addEventListener('mousedown', selectWord);
+  btn.addEventListener('mouseup', hideSelection);
 });
-let word = "";
+let word = '';
 function selectWord(event) {
-  let targetElement = event.target;
-  targetElement.classList.add("pressed");
+  const targetElement = event.target;
+  targetElement.classList.add('pressed');
   word += targetElement.innerText;
-  let index = Array.from(targetElement.parentElement.children).indexOf(
-    targetElement
-  );
+  const index = Array.from(targetElement.parentElement.children).indexOf(targetElement);
 
   if (targetElement.nextElementSibling) {
-    targetElement.nextElementSibling.addEventListener(
-      "mouseover",
-      handleMouseOver
-    );
+    targetElement.nextElementSibling.addEventListener('mouseover', selectWord);
+  }
+
+  if (targetElement.previousElementSibling) {
+    targetElement.previousElementSibling.addEventListener('mouseover', selectWord);
   }
 
   if (targetElement.parentElement.nextElementSibling) {
-    targetElement.parentElement.nextElementSibling.children[
-      index
-    ].addEventListener("mouseover", handleMouseOver);
-    //targetElement.parentElement.nextElementSibling.children[index+1].addEventListener('mouseover', handleMouseOver);
+    targetElement.parentElement.nextElementSibling.children[index].addEventListener('mouseover', selectWord);
+    if (targetElement.parentElement.nextElementSibling.children[index + 1]) {
+      targetElement.parentElement.nextElementSibling.children[index + 1].addEventListener('mouseover', selectWord);
+    }
+    if (targetElement.parentElement.nextElementSibling.children[index - 1]) {
+      targetElement.parentElement.nextElementSibling.children[index - 1].addEventListener('mouseover', selectWord);
+    }
   }
 
-  //console.log(word);
+  if (targetElement.parentElement.previousElementSibling) {
+    targetElement.parentElement.previousElementSibling.children[index].addEventListener('mouseover', selectWord);
+    if (targetElement.parentElement.previousElementSibling.children[index + 1]) {
+      targetElement.parentElement.previousElementSibling.children[index + 1].addEventListener('mouseover', selectWord);
+    }
+    if (targetElement.parentElement.previousElementSibling.children[index - 1]) {
+      targetElement.parentElement.previousElementSibling.children[index - 1].addEventListener('mouseover', selectWord);
+    }
+  }
+  console.log('word');
 }
 
-function handleMouseOver(event) {
-  let targetElement = event.target;
-  targetElement.classList.add("pressed");
-  word += targetElement.innerText;
 
-  let index = Array.from(targetElement.parentElement.children).indexOf(
-    targetElement
-  );
+function hideSelection() {
+  const rows = document.querySelectorAll('.boggle .row');
 
-  if (targetElement.nextElementSibling) {
-    targetElement.nextElementSibling.addEventListener(
-      "mouseover",
-      handleMouseOver
-    );
-  }
-  //console.log(targetElement.parentElement.nextElementSibling.children[index])
-  if (targetElement.parentElement.nextElementSibling) {
-    targetElement.parentElement.nextElementSibling.children[
-      index
-    ].addEventListener("mouseover", handleMouseOver);
-  }
-
-  // console.log(word);
-}
-
-function hideSelection() {}
-
-//пока закомментировал. Добавил
-// clearBtn.addEventListener("click", () => {
-//   window.location.reload();
-// });
-
-// change random letter after click ClearBtn
-
-clearBtn.addEventListener("click", () => {
-  if (!isGameStart) {
-    btn.forEach((btnItem, index) => {
-      btnItem.innerHTML = `${randomLetter(index)}`;
+  rows.forEach((row) => {
+    const buttons = row.querySelectorAll('.button');
+    buttons.forEach((btn) => {
+      btn.classList.remove('pressed');
+      word = '';
+      btn.removeEventListener('mouseover', selectWord);
     });
-  } else {
-    window.location.reload();
-  }
-});
+  });
+}
