@@ -1,4 +1,5 @@
 import randomLetter from "./js/randomLetter.js";
+const {user1,user2,user3} = require('src/users')
 
 const btn = document.querySelectorAll(".button--boggle");
 const clearBtn = document.querySelector(".clearBtn");
