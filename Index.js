@@ -1,8 +1,14 @@
 import randomLetter from "./js/randomLetter.js";
+import startTimer from "./js/timer.js";
 
 const btn = document.querySelectorAll(".button--boggle");
 const clearBtn = document.querySelector(".clearBtn");
+const body = document.querySelector(".container");
 let isGameStart = false;
+
+//timer
+body.appendChild(startTimer());
+// end timer
 
 btn.forEach((btn) => {
   btn.addEventListener("mousedown", selectWord);
@@ -11,6 +17,7 @@ btn.forEach((btn) => {
 let word = "";
 function selectWord(event) {
   isGameStart = true;
+
   const targetElement = event.target;
   targetElement.classList.add("pressed");
   word += targetElement.innerText;
@@ -83,7 +90,7 @@ function hideSelection() {
 // смена букв на кнопках
 btn.forEach((btnItem, index) => {
   btnItem.innerHTML = `${randomLetter(index)}`;
-})
+});
 clearBtn.addEventListener("click", () => {
   if (!isGameStart) {
     btn.forEach((btnItem, index) => {
