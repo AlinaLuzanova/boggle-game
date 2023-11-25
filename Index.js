@@ -39,9 +39,8 @@ function selectWord(event) {
       targetElement.parentElement.previousElementSibling.children[index - 1].addEventListener('mouseover', selectWord);
     }
   }
-  console.log('word');
+  console.log(word);
 }
-
 
 function hideSelection() {
   const rows = document.querySelectorAll('.boggle .row');
