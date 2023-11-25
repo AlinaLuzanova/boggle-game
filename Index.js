@@ -1,6 +1,6 @@
 import randomLetter from "./js/randomLetter.js";
 import { user1,user2,user3 } from './src/users.js';
-
+import letters from './src/letters.js'
 import startTimer from "./js/timer.js";
 
 const btn = document.querySelectorAll(".button--boggle");
@@ -20,12 +20,21 @@ btn.forEach((btn) => {
   btn.addEventListener("mouseup", hideSelection);
 });
 let word = "";
+let selectedElements = [];
+
 function selectWord(event) {
   isGameStart = true;
 
   const targetElement = event.target;
+
+  if (selectedElements.includes(targetElement)) {
+    return;
+  }
+
   targetElement.classList.add("pressed");
   word += targetElement.innerText;
+  selectedElements.push(targetElement);
+
   const index = Array.from(targetElement.parentElement.children).indexOf(
     targetElement
   );
