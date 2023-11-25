@@ -2,7 +2,7 @@
   "name": "project-boggle",
   "version": "1.0.0",
   "description": "Привет! Нужно написать игру [Боггл](https://ru.wikipedia.org/wiki/Боггл) на HTML, CSS, JS. Задач много, поэтому лучше делать этот проект втроём или вчетвером.",
-  "main": "index.js",
+  "main": "Index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

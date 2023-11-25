@@ -6,21 +6,43 @@ btn.forEach((btn)=>{
     //btn.addEventListener('mouseup',hideSelection)
 })
 let word = ''
-function selectWord(event){
-    const targetElement = event.target;
-    targetElement.classList.add('pressed');
-    word+=targetElement.innerText
-    if(targetElement.nextElementSibling){
-        targetElement.nextElementSibling.addEventListener('mouseover',()=>{
-            targetElement.nextElementSibling.classList.add('pressed')
-        })
+function selectWord(event) {
 
-        this.nextElementSibling.addEventListener('mouseout',()=>{
-            this.nextElementSibling.classList.remove('pressed')
-            this.classList.remove('pressed')
-        })
+    let targetElement = event.target;
+    targetElement.classList.add('pressed');
+    word += targetElement.innerText;
+    let index = Array.from(targetElement.parentElement.children).indexOf(targetElement);
+
+    if (targetElement.nextElementSibling) {
+        targetElement.nextElementSibling.addEventListener('mouseover', handleMouseOver);
     }
-    console.log(word)
+
+    if (targetElement.parentElement.nextElementSibling){
+        targetElement.parentElement.nextElementSibling.children[index].addEventListener('mouseover', handleMouseOver);
+        //targetElement.parentElement.nextElementSibling.children[index+1].addEventListener('mouseover', handleMouseOver);
+
+    }
+
+    //console.log(word);
+}
+
+function handleMouseOver(event) {
+
+    let targetElement = event.target;
+    targetElement.classList.add('pressed');
+    word += targetElement.innerText;
+
+    let index = Array.from(targetElement.parentElement.children).indexOf(targetElement);
+
+    if (targetElement.nextElementSibling) {
+        targetElement.nextElementSibling.addEventListener('mouseover', handleMouseOver);
+    }
+    //console.log(targetElement.parentElement.nextElementSibling.children[index])
+    if (targetElement.parentElement.nextElementSibling){
+        targetElement.parentElement.nextElementSibling.children[index].addEventListener('mouseover', handleMouseOver)
+    }
+
+   // console.log(word);
 }
 
 function hideSelection(){

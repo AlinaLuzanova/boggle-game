@@ -1,0 +1,126 @@
+html{
+  font-family:  'IBM Plex Mono', monospace;
+  background-color: #edf5e1;
+}
+
+.hidden{
+  display: none;
+}
+
+body{
+  background-color: #ffffff;
+  width: 800px;
+  margin: 20px auto;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.container{
+  width: 520px;
+  height: fit-content;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #0000ff;
+  border-radius: 10px;
+  gap: 20px;
+}
+
+.play-field{
+  width: 290px;
+  height: fit-content;
+  border-radius:5px;
+}
+
+#input-word{
+  width:100%;
+  height: 30px;
+  box-sizing: border-box;
+  border: 1px solid #CCC;
+  border-radius: 0;
+  margin: 20px 0px;
+  font-size: 26px;
+  padding: 5px;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+.button{
+  width: 55px;
+  height: 55px;
+  background-color: #FFF;
+  color: #000;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 34px;
+  text-transform: capitalize;
+  border-radius: 7px;
+  box-shadow: inset 0 0 16px #333;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+button::before{
+  content: "";
+  display: block;
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  background-color: #eee;
+  border: 1px solid #CCC;
+  border-radius: 40px;
+  box-shadow: inset 1px 2px 2px #fff;
+  left: 1px;
+  top: 1px;
+  z-index: 1;
+}
+.button.pressed{
+  background-color: red;
+}
+.btn-text{
+  position: absolute;
+  font-size: 24px;
+  z-index: 2;
+  top: 8px;
+  left: 18px;
+}
+
+.boggle{
+  width: auto;
+  margin: 0 auto;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap:5px;
+  justify-content: center;
+  align-self: center;
+  padding: 10px;
+}
+
+.right-words{
+  width: 220px;
+  height: 280px;
+  margin: 0 auto;
+  border: 1px solid #000000;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+}
+
+.score{
+  font-size: 22px;
+  line-height: 25px;
+  color: #0a6ebd;
+  box-sizing: border-box;
+    background-color: #EEE;
+}
+
+.clearBtn{
+  align-self: flex-end;
+}
