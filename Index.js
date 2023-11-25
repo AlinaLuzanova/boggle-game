@@ -1,16 +1,17 @@
 import randomLetter from "./js/randomLetter.js";
-import { user1, user2, user3 } from "./src/users.js";
-
+import { showSortedUsers } from './js/login.js';
 import startTimer from "./js/timer.js";
+import { storedUsers } from './js/login.js';
 
 const btn = document.querySelectorAll(".button--boggle");
 const clearBtn = document.querySelector(".clearBtn");
 const body = document.querySelector(".container");
 let isGameStart = false;
-const input = document.querySelector("input");
-const submitInput = document.querySelector(".button--add-user");
+const showWord = document.querySelector('.showWord');
 const player = document.querySelector(".player-score");
-
+const input = document.querySelector("#player-name");
+const topWords = document.querySelector('.top-word')
+const correctWords = document.querySelector('.correct-word')
 //timer
 body.appendChild(startTimer());
 // end timer
@@ -85,35 +86,65 @@ function selectWord(event) {
     }
   }
   console.log(word);
+  showWord.value = word;
 }
-
+let arr = [];
 function hideSelection() {
-  const rows = document.querySelectorAll(".boggle .row");
+  const finishWord = word;
+  selectedElements = [];
+  let wordGet = finishWord;
+  let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${wordGet}`;
 
+  const rows = document.querySelectorAll(".boggle .row");
   rows.forEach((row) => {
     const buttons = row.querySelectorAll(".button--boggle");
     buttons.forEach((btn) => {
       btn.classList.remove("pressed");
       word = "";
       btn.removeEventListener("mouseover", selectWord);
+      showWord.value =''
     });
   });
+
+  async function fetchData(url) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Ошибка при выполнении запроса:", error);
+    }
+  }
+  function dataShow(data) {
+    if (data) {
+      const [word] = data;
+      let checkWord = word.word;
+      arr.push(word.word);
+      //console.log(arr);
+      //const rightWords = document.querySelector(".right-words");
+      //const rightWord = document.createElement("div");
+      //rightWord.innerHTML = `<div class="word"><span class="word-header">${checkWord}</span><span class="word-length"></span></div>`;
+      //rightWords.appendChild(rightWord);
+
+      for (let i = 0; i < storedUsers.length ; i++) {
+        if(input.value === storedUsers[i].name){
+          storedUsers[i].correctScore.push(checkWord);
+          topWords.innerText = storedUsers[i].correctScore.join('\n\n');
+          correctWords.innerText = storedUsers[i].correctScore.join('\n\n');
+        }
+      }
+
+    } else {
+      console.log("Такого слова не существует!");
+    }
+  }
+  fetchData(url).then((data) => dataShow(data));
+
 }
 
-const storedUsers = [
-  `${JSON.parse(localStorage.getItem("user1")).name} ${
-    JSON.parse(localStorage.getItem("user1")).score
-  }`,
-  `${JSON.parse(localStorage.getItem("user2")).name} ${
-    JSON.parse(localStorage.getItem("user2")).score
-  }`,
-  `${JSON.parse(localStorage.getItem("user3")).name} ${
-    JSON.parse(localStorage.getItem("user3")).score
-  }`,
-];
-
-player.innerText = storedUsers.join(",").replace(/,/g, "\n\n");
-submitInput.addEventListener("click", () => {});
 
 // смена букв на кнопках
 btn.forEach((btnItem, index) => {
@@ -129,31 +160,6 @@ clearBtn.addEventListener("click", () => {
   }
 });
 
-// проверка слова в словаре
+player.innerText = showSortedUsers();
 
-// пока попытки работы с API
-let wordGet = word; //сюда нужно вставлять слово из полученного на страничке
-let arr = []; // сюда пушатся слова если они существуют
-let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${wordGet}`;
-async function fetchData(url) {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Ошибка при выполнении запроса:", error);
-  }
-}
-function dataShow(data) {
-  if (data) {
-    const [word] = data;
-    arr.push(word.word);
-    console.log(arr);
-  } else {
-    console.log("Такого слова не существует!");
-  }
-}
-fetchData(url).then((data) => dataShow(data));
+

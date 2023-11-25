@@ -1,16 +1,22 @@
 export const user1 = {
   name: 'Alina',
-  score: 0
+  score: 0,
+  correctScore:[],
+  topWords : []
 };
 
 export const user2 = {
   name: 'Denis',
-  score: 0
+  score: 0,
+  correctScore:[],
+  topWords : []
 };
 
 export const user3 = {
   name: 'Ruslan',
-  score: 0
+  score: 0,
+  correctScore:[],
+  topWords : []
 };
 
 localStorage.setItem('user1', JSON.stringify(user1));

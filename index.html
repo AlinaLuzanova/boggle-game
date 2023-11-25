@@ -23,13 +23,14 @@
               type="text"
               placeholder="Ваше имя:"
       />
-      <button class="button button--add-user">Ввести</button>
+      <button class="button button--add-user">Войти</button>
     </div>
     <input
             id="input-word"
             type="text"
             placeholder="Придумайте слово"
             disabled
+            class="showWord"
     />
     <div class="boggle">
       <div class="row row1">
@@ -62,13 +63,13 @@
   <div class="right-container">
     <div class="right-words">
       <div class="score"><span class="score-header">Ваши очки: </span><span class="score-number"></span></div>
-      <div class="word"><span class="word-header"></span><span class="word-length"></span></div>
+      <div class="word"><span class="word-header"></span><span class="word-length correct-word"></span></div>
     </div>
   </div>
   <div class = "hi-score">
     <div class="longest-words">
       <div class="score"><span class="score-header">Топ слов:</span></div>
-      <div class="word"><span class="word-header"></span><span class="word-length"></span><span class="player"></span></div>
+      <div class="word"><span class="word-header"></span><span class="word-length top-word"></span><span class="player"></span></div>
     </div>
     <div class="Top-players">
       <div class="score"><span class="score-header">Топ игроков:</span></div>
