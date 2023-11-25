@@ -1,81 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/index.css" />
-    <title>Боггл</title>
-    <script src="Index.js" defer type="module"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class = "play-field">
-        <div class="input-container">
-          <input
-            id="player-name"
-            type="text"
-            placeholder="Ваше имя:"
-          />
-          <button class="button button--add-user">Ввести</button>
-        </div>
-          <input
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+          rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <title>Боггл</title>
+  <script src="Index.js" defer type="module"></script>
+</head>
+<body>
+<div class="container">
+  <div class = "play-field">
+    <div class="input-container">
+      <input
+              id="player-name"
+              type="text"
+              placeholder="Ваше имя:"
+      />
+      <button class="button button--add-user">Ввести</button>
+    </div>
+    <input
             id="input-word"
             type="text"
             placeholder="Придумайте слово"
             disabled
-          />
-          <div class="boggle">
-            <div class="row row1">
-              <button class="button--boggle btn1"></button>
-              <button class="button--boggle btn2"></button>
-              <button class="button--boggle btn3"></button>
-              <button class="button--boggle btn4"></button>
-            </div>
-            <div class="row row2">
-              <button class="button--boggle btn5"></button>
-              <button class="button--boggle btn6"></button>
-              <button class="button--boggle btn7"></button>
-              <button class="button--boggle btn8"></button>
-            </div>
-            <div class="row">
-              <button class="button--boggle btn9"></button>
-              <button class="button--boggle btn10"></button>
-              <button class="button--boggle btn11"></button>
-              <button class="button--boggle btn12"></button>
-            </div>
-            <div class="row">
-              <button class="button--boggle btn13"></button>
-              <button class="button--boggle btn14"></button>
-              <button class="button--boggle btn15"></button>
-              <button class="button--boggle btn16"></button>
-            </div>
-          </div>
-          <button class = "clearBtn">Перемешать</button>
+    />
+    <div class="boggle">
+      <div class="row row1">
+        <button class="button--boggle btn1"></button>
+        <button class="button--boggle btn2"></button>
+        <button class="button--boggle btn3"></button>
+        <button class="button--boggle btn4"></button>
       </div>
-      <div class="right-container">
-        <div class="right-words">
-          <div class="score"><span class="score-header">Ваши очки: </span><span class="score-number">13</span></div>
-          <div class="word"><span class="word-header">Hello</span><span class="word-length">+5</span></div>
-          <div class="word"><span class="word-header">Longword</span><span class="word-length">+8</span></div>
+      <div class="row row2">
+        <button class="button--boggle btn5"></button>
+        <button class="button--boggle btn6"></button>
+        <button class="button--boggle btn7"></button>
+        <button class="button--boggle btn8"></button>
       </div>
+      <div class="row">
+        <button class="button--boggle btn9"></button>
+        <button class="button--boggle btn10"></button>
+        <button class="button--boggle btn11"></button>
+        <button class="button--boggle btn12"></button>
       </div>
-      <div class = "hi-score">
-        <div class="longest-words">
-          <div class="score"><span class="score-header">Топ слов:</span></div>
-          <div class="word"><span class="word-header">Helloween</span><span class="word-length">9</span><span class="player">Den</span></div>
-          <div class="word"><span class="word-header">Hello</span><span class="word-length">5</span><span class="player">Den</span></div>
-        </div>
-        <div class="Top-players">
-          <div class="score"><span class="score-header">Топ игроков:</span></div>
-          <div class="word"><span class="player">Den</span><span class="player-score">18</span></div>
-          <div class="word"><span class="player">Alina</span><span class="player-score">18</span></div>
+      <div class="row">
+        <button class="button--boggle btn13"></button>
+        <button class="button--boggle btn14"></button>
+        <button class="button--boggle btn15"></button>
+        <button class="button--boggle btn16"></button>
+      </div>
     </div>
+    <button class = "clearBtn">Перемешать</button>
+  </div>
+  <div class="right-container">
+    <div class="right-words">
+      <div class="score"><span class="score-header">Ваши очки: </span><span class="score-number"></span></div>
+      <div class="word"><span class="word-header"></span><span class="word-length"></span></div>
     </div>
-  </body>
+  </div>
+  <div class = "hi-score">
+    <div class="longest-words">
+      <div class="score"><span class="score-header">Топ слов:</span></div>
+      <div class="word"><span class="word-header"></span><span class="word-length"></span><span class="player"></span></div>
+    </div>
+    <div class="Top-players">
+      <div class="score"><span class="score-header">Топ игроков:</span></div>
+      <div class="word"><span class="player"></span><span class="player-score"></span></div>
+    </div>
+  </div>
+</div>
+</body>
