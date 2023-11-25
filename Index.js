@@ -1,5 +1,5 @@
 import randomLetter from "./js/randomLetter.js";
-import { user1,user2,user3 } from './src/users.js';
+import { user1, user2, user3 } from "./src/users.js";
 
 import startTimer from "./js/timer.js";
 
@@ -7,9 +7,9 @@ const btn = document.querySelectorAll(".button--boggle");
 const clearBtn = document.querySelector(".clearBtn");
 const body = document.querySelector(".container");
 let isGameStart = false;
-const input = document.querySelector('input');
-const submitInput = document.querySelector('.button--add-user');
-const player = document.querySelector('.player-score');
+const input = document.querySelector("input");
+const submitInput = document.querySelector(".button--add-user");
+const player = document.querySelector(".player-score");
 
 //timer
 body.appendChild(startTimer());
@@ -100,15 +100,20 @@ function hideSelection() {
   });
 }
 
-const storedUsers = [`${JSON.parse(localStorage.getItem('user1')).name} ${JSON.parse(localStorage.getItem('user1')).score}`,
-  `${JSON.parse(localStorage.getItem('user2')).name} ${JSON.parse(localStorage.getItem('user2')).score}`,
-  `${JSON.parse(localStorage.getItem('user3')).name} ${JSON.parse(localStorage.getItem('user3')).score}`];
+const storedUsers = [
+  `${JSON.parse(localStorage.getItem("user1")).name} ${
+    JSON.parse(localStorage.getItem("user1")).score
+  }`,
+  `${JSON.parse(localStorage.getItem("user2")).name} ${
+    JSON.parse(localStorage.getItem("user2")).score
+  }`,
+  `${JSON.parse(localStorage.getItem("user3")).name} ${
+    JSON.parse(localStorage.getItem("user3")).score
+  }`,
+];
 
-player.innerText = storedUsers.join(',').replace(/,/g, '\n\n')
-submitInput.addEventListener('click',()=>{
-
-})
-
+player.innerText = storedUsers.join(",").replace(/,/g, "\n\n");
+submitInput.addEventListener("click", () => {});
 
 // смена букв на кнопках
 btn.forEach((btnItem, index) => {
@@ -123,3 +128,32 @@ clearBtn.addEventListener("click", () => {
     window.location.reload();
   }
 });
+
+// проверка слова в словаре
+
+// пока попытки работы с API
+let wordGet = "hello"; //сюда нужно вставлять слово из полученного на страничке
+let arr = []; // сюда пушатся слова если они существуют
+let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${wordGet}`;
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Ошибка при выполнении запроса:", error);
+  }
+}
+function dataShow(data) {
+  if (data) {
+    const [word] = data;
+    arr.push(word.word);
+    console.log(arr);
+  } else {
+    console.log("Такого слова не существует!");
+  }
+}
+fetchData(url).then((data) => dataShow(data));
