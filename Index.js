@@ -1,13 +1,19 @@
 import randomLetter from "./js/randomLetter.js";
 import { user1,user2,user3 } from './src/users.js';
 
+import startTimer from "./js/timer.js";
 
 const btn = document.querySelectorAll(".button--boggle");
 const clearBtn = document.querySelector(".clearBtn");
+const body = document.querySelector(".container");
 let isGameStart = false;
 const input = document.querySelector('input');
 const submitInput = document.querySelector('.button--add-user');
 const player = document.querySelector('.player-score');
+
+//timer
+body.appendChild(startTimer());
+// end timer
 
 btn.forEach((btn) => {
   btn.addEventListener("mousedown", selectWord);
@@ -16,6 +22,7 @@ btn.forEach((btn) => {
 let word = "";
 function selectWord(event) {
   isGameStart = true;
+
   const targetElement = event.target;
   targetElement.classList.add("pressed");
   word += targetElement.innerText;
@@ -98,7 +105,7 @@ submitInput.addEventListener('click',()=>{
 // смена букв на кнопках
 btn.forEach((btnItem, index) => {
   btnItem.innerHTML = `${randomLetter(index)}`;
-})
+});
 clearBtn.addEventListener("click", () => {
   if (!isGameStart) {
     btn.forEach((btnItem, index) => {
