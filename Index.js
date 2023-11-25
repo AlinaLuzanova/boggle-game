@@ -1,9 +1,13 @@
 import randomLetter from "./js/randomLetter.js";
-const {user1,user2,user3} = require('src/users')
+import { user1,user2,user3 } from './src/users.js';
+
 
 const btn = document.querySelectorAll(".button--boggle");
 const clearBtn = document.querySelector(".clearBtn");
 let isGameStart = false;
+const input = document.querySelector('input');
+const submitInput = document.querySelector('.button--add-user');
+const player = document.querySelector('.player-score');
 
 btn.forEach((btn) => {
   btn.addEventListener("mousedown", selectWord);
@@ -80,6 +84,16 @@ function hideSelection() {
     });
   });
 }
+
+const storedUsers = [`${JSON.parse(localStorage.getItem('user1')).name} ${JSON.parse(localStorage.getItem('user1')).score}`,
+  `${JSON.parse(localStorage.getItem('user2')).name} ${JSON.parse(localStorage.getItem('user2')).score}`,
+  `${JSON.parse(localStorage.getItem('user3')).name} ${JSON.parse(localStorage.getItem('user3')).score}`];
+
+player.innerText = storedUsers.join(',').replace(/,/g, '\n\n')
+submitInput.addEventListener('click',()=>{
+
+})
+
 
 // смена букв на кнопках
 btn.forEach((btnItem, index) => {
