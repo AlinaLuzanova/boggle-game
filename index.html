@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,51 +12,68 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/index.css" />
     <title>Боггл</title>
-    <script src="Index.js" defer></script>
+    <script src="Index.js" defer type="modules"></script>
   </head>
   <body>
     <div class="container">
-      <div class = "play-field">
-          <input
-            id="input-word"
-            type="text"
-            placeholder="Придумайте слово"
-            disabled
-          />
-          <div class="boggle">
-            <div class="row row1">
+      <div class="play-field">
+        <input
+          id="input-word"
+          type="text"
+          placeholder="Придумайте слово"
+          disabled
+        />
+        <div class="boggle">
+          <div class="row row1">
             <button class="button btn1"><span class="btn-text">A</span></button>
             <button class="button btn2"><span class="btn-text">A</span></button>
             <button class="button btn3"><span class="btn-text">A</span></button>
             <button class="button btn4"><span class="btn-text">A</span></button>
-            </div>
-            <div class="row row2">
+          </div>
+          <div class="row row2">
             <button class="button btn5"><span class="btn-text">A</span></button>
             <button class="button btn6"><span class="btn-text">A</span></button>
             <button class="button btn7"><span class="btn-text">A</span></button>
             <button class="button btn8"><span class="btn-text">A</span></button>
-            </div>
-              <div class="row">
-            <button class="button btn9"><span class="btn-text">A</span></button>
-            <button class="button btn10"><span class="btn-text">A</span></button>
-            <button class="button btn11"><span class="btn-text">A</span></button>
-            <button class="button btn12"><span class="btn-text">A</span></button>
-              </div>
-                <div class="row">
-            <button class="button btn13"><span class="btn-text">A</span></button>
-            <button class="button btn14"><span class="btn-text">A</span></button>
-            <button class="button btn15"><span class="btn-text">A</span></button>
-            <button class="button btn16"><span class="btn-text">A</span></button>
-                </div>
           </div>
+          <div class="row">
+            <button class="button btn9"><span class="btn-text">A</span></button>
+            <button class="button btn10">
+              <span class="btn-text">A</span>
+            </button>
+            <button class="button btn11">
+              <span class="btn-text">A</span>
+            </button>
+            <button class="button btn12">
+              <span class="btn-text">A</span>
+            </button>
+          </div>
+          <div class="row">
+            <button class="button btn13">
+              <span class="btn-text">A</span>
+            </button>
+            <button class="button btn14">
+              <span class="btn-text">A</span>
+            </button>
+            <button class="button btn15">
+              <span class="btn-text">A</span>
+            </button>
+            <button class="button btn16">
+              <span class="btn-text">A</span>
+            </button>
+          </div>
+        </div>
       </div>
       <div class="right-container">
         <div class="right-words">
           <div class="score">13</div>
-          <div class="word">Hello</div><span class="word-length">+5</span>
-          <div class="word">Longword</div><span class="word-length">+8</span>
+          <div class="word">Hello</div>
+          <span class="word-length">+5</span>
+          <div class="word">Longword</div>
+          <span class="word-length">+8</span>
         </div>
-        <button class = "clearBtn">Перемешать</button>
-    </div>
+        <button class="clearBtn">Перемешать</button>
+      </div>
     </div>
   </body>
+</html>

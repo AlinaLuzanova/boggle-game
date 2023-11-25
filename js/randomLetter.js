@@ -1,10 +1,8 @@
-const letters = require("../src/letters.js");
-const randomNum = require("./randomNum.js");
+import letters from "../src/letters.js";
+import randomNum from "./randomNum.js";
 
 function randomLetter(btnNumber) {
   return letters[btnNumber][+randomNum()];
 }
 
-console.log(randomLetter(5));
-
-module.exports = randomLetter;
+export default randomLetter;
