@@ -9,10 +9,10 @@
         "ecmaVersion": "latest"
     },
     "rules": {
-        "singleQuote": true,
-        "trailingComma": "es5",
-        "printWidth": 150,
-        "tabWidth": 2,
+        "singleQuote": 2,
+        "trailingComma": ["error", "es5"],
+        "printWidth": [2, 150],
+        "tabWidth": [2, 2],
         "linebreak-style": ["error", "windows"]
     }
 }

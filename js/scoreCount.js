@@ -1,33 +1,56 @@
-const scoreDomContainer = document.querySelector('.right-words');
-const playerName = document.querySelector('.userName');
-import { storedUsers } from './login.js';
+// const scoreDomContainer = document.querySelector('.right-words');
+// const playerName = document.querySelector('.userName');
+
+// import { storedUsers } from './login.js';
+
+function getUserFromLocalStorage(userKey) {
+  const userData = JSON.parse(localStorage.getItem(userKey));
+  return {
+    name: userData.name,
+    score: userData.score,
+    correctScore: userData.correctScore,
+    topWords: userData.topWords,
+    allWords: userData.allWords,
+  };
+}
+
+const storedUsers = [
+  getUserFromLocalStorage('user1'),
+  getUserFromLocalStorage('user2'),
+  getUserFromLocalStorage('user3'),
+];
 
 const scoreTable = [
-  { lengthWord: 3, scoreWord: 1 },
+  { lengthWord: 1, scoreWord: 0 },
+  { lengthWord: 2, scoreWord: 0 },
+  { lengthWord: 3, scoreWord: 0 },
   { lengthWord: 4, scoreWord: 1 },
   { lengthWord: 5, scoreWord: 2 },
   { lengthWord: 6, scoreWord: 3 },
   { lengthWord: 7, scoreWord: 5 },
   { lengthWord: 8, scoreWord: 11 },
 ];
-/**
-function manageScores(user,word){
-  let resScore = storedUsers[user].score;
-  let allWords = storedUsers[user].correctScore;
-  let topWords = storedUsers[user].topWords;
-  for (let i = 0; i < scoreTable; i++) {
-    if (word.length === scoreTable[i].lengthWord){
-      resScore+=scoreTable[i].scoreWord;
-      allWords.push(`${word} +${scoreTable[i].scoreWord}`)
-      let {wordTop,scoreTop} = topWords;
-      wordTop = word;
-      scoreTop = scoreTable[i].scoreWord;
+
+function manageScores(user, word) {
+  const resScore = storedUsers[user].score;
+  const corWords = storedUsers[user].correctScore;
+  let { topWords } = storedUsers[user];
+  for (let i = 0; i < scoreTable.length; i++) {
+    if (word.length === scoreTable[i].lengthWord) {
+      resScore.push(scoreTable[i].scoreWord);
+      corWords.push(`${word} +${scoreTable[i].scoreWord}`);
+      topWords = [...corWords];
+      topWords.sort((a, b) => {
+        const scoreA = parseInt(a.split(' +')[1]);
+        const scoreB = parseInt(b.split(' +')[1]);
+        return scoreB - scoreA;
+      });
     }
   }
-  let entries = Object.entries(topWords);
-  let sortedTop = Object.fromEntries(entries.sort((a, b) => a[1] - b[1]));
-  return [resScore, allWords, sortedTop]
+  return [resScore.reduce((accum, item) => accum + item, 0), corWords, topWords];
 }
+
+export default manageScores;
 
 /**
 
@@ -61,4 +84,4 @@ scoreDomContainer.addEventListener('click', () => {
   gameScore.innerHTML = resScore;
   gameResults(playerName.innerHTML, resScore, longestWord);
 });
-**/
+* */
