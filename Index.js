@@ -2,6 +2,7 @@ import randomLetter from "./js/randomLetter.js";
 import { showSortedUsers } from './js/login.js';
 import startTimer from "./js/timer.js";
 import { storedUsers } from './js/login.js';
+//import manageScores from './js/scoreCount.js'
 
 const btn = document.querySelectorAll(".button--boggle");
 const clearBtn = document.querySelector(".clearBtn");
@@ -128,12 +129,39 @@ function hideSelection() {
       //const rightWord = document.createElement("div");
       //rightWord.innerHTML = `<div class="word"><span class="word-header">${checkWord}</span><span class="word-length"></span></div>`;
       //rightWords.appendChild(rightWord);
+      //console.log(manageScores(checkWord,storedUsers[0].name));
+      const scoreTable = [
+        { lengthWord: 3, scoreWord: 1 },
+        { lengthWord: 4, scoreWord: 1 },
+        { lengthWord: 5, scoreWord: 2 },
+        { lengthWord: 6, scoreWord: 3 },
+        { lengthWord: 7, scoreWord: 5 },
+        { lengthWord: 8, scoreWord: 11 },
+      ];
 
       for (let i = 0; i < storedUsers.length ; i++) {
         if(input.value === storedUsers[i].name){
           storedUsers[i].correctScore.push(checkWord);
-          topWords.innerText = storedUsers[i].correctScore.join('\n\n');
-          correctWords.innerText = storedUsers[i].correctScore.join('\n\n');
+            let resScore = storedUsers[i].score;
+            let allWords = storedUsers[i].correctScore;
+            let topWords = storedUsers[i].topWords;
+            for (let i = 0; i < scoreTable; i++) {
+              if (word.length === scoreTable[i].lengthWord){
+                resScore+=scoreTable[i].scoreWord;
+                allWords.push(`${word} +${scoreTable[i].scoreWord}`)
+                let {wordTop,scoreTop} = topWords;
+                wordTop = word;
+                scoreTop = scoreTable[i].scoreWord;
+              }
+            }
+            let entries = Object.entries(topWords);
+            let sortedTop = Object.fromEntries(entries.sort((a, b) => a[1] - b[1]));
+            const info = [resScore, allWords, sortedTop]
+
+          const [score, correctWord, topWord] = info
+          topWords.innerText = 'gvhgvhgvg'
+          //topWords.innerText = topWord.join('\n\n');
+          correctWords.innerText = correctWord.join('\n\n');
         }
       }
 

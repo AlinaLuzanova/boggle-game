@@ -39,7 +39,7 @@ body{
   box-sizing: border-box;
   width: 100%;
   height: 36px;
-  position: relative;  
+  position: relative;
 }
 
 #player-name{
@@ -121,7 +121,7 @@ body{
   height: 66px;
   background-color: #eee;
   border: 1px solid #CCC;
-  border-radius: 40px;  
+  border-radius: 40px;
   box-shadow: inset 1px 2px 2px #fff;
   left: 1px;
   top: 1px;
@@ -208,4 +208,12 @@ body{
 
 .player-score{
   justify-content: flex-end;
+}
+.longest-words{
+  overflow-y: auto;
+  max-height: inherit;
+}
+.correct-word{
+  overflow-y: auto;
+  max-height: inherit;
 }

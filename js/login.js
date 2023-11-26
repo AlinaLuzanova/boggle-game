@@ -34,10 +34,12 @@ export function showSortedUsers(){
 submitInput.addEventListener("click", () => {
   for (let i = 0; i < storedUsers.length; i++) {
     if(input.value === storedUsers[i].name){
-      topWords.innerText = storedUsers[i].topWords.join('\n\n');
+      console.log('succes');
+      topWords.innerText = storedUsers[i].topWords;
       correctWords.innerText = storedUsers[i].correctScore.join('\n\n');
     }
   }
 });
+
 
 
