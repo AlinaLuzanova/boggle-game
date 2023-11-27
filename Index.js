@@ -11,7 +11,7 @@ const player = document.querySelector('.player-name');
 const playerScore = document.querySelector('.player-score');
 const input = document.querySelector('#player-name');
 const topWords = document.querySelector('.top-word');
-const correctWords = document.querySelector('.correct-word');
+const correctWords = document.querySelector('.word');
 
 btn.forEach((btn) => {
   btn.addEventListener('mousedown', selectWord);
@@ -118,11 +118,18 @@ function hideSelection() {
     if (data) {
       const [word] = data;
       const checkWord = word.word;
-      arr.push(word.word);
+
+      if (arr.includes(word.word)) {
+        console.log("Слово уже использовано.");
+        return false;
+      } else{
+        arr.push(word.word);
+      }
+
       console.log(checkWord);
       for (let i = 0; i < storedUsers.length; i++) {
         if (input.value === storedUsers[i].name) {
-          storedUsers[i].allWords.push(checkWord);
+          storedUsers[i].allWords.push(arr[arr.length-1]);
           const [score, corWords, sortedTop] = manageScores(i, storedUsers[i].allWords[storedUsers[i].allWords.length - 1]);
           storedUsers[i].score = score;
           console.log([score, corWords, sortedTop]);

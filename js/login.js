@@ -6,7 +6,7 @@ import randomLetter from './randomLetter.js';
 const input = document.querySelector('#player-name');
 const submitInput = document.querySelector('.button--add-user');
 const topWords = document.querySelector('.top-word');
-const correctWords = document.querySelector('.correct-word');
+const correctWords = document.querySelector('.word');
 const body = document.querySelector('.container');
 const btn = document.querySelectorAll('.button--boggle');
 
