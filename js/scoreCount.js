@@ -1,7 +1,7 @@
 // const scoreDomContainer = document.querySelector('.right-words');
 // const playerName = document.querySelector('.userName');
 
-// import { storedUsers } from './login.js';
+
 
 function getUserFromLocalStorage(userKey) {
   const userData = JSON.parse(localStorage.getItem(userKey));
@@ -31,6 +31,8 @@ const scoreTable = [
   { lengthWord: 8, scoreWord: 11 },
 ];
 
+
+
 function manageScores(user, word) {
   const resScore = storedUsers[user].score;
   const corWords = storedUsers[user].correctScore;
@@ -47,7 +49,27 @@ function manageScores(user, word) {
       });
     }
   }
+  const updatedUserData = {
+    name:  storedUsers[user].name,
+    score: resScore,
+    correctScore: corWords,
+    topWords: topWords,
+    allWords: storedUsers[user].allWords,
+  };
+
+  saveUserToLocalStorage(`user${user+1}`, updatedUserData);
+  console.log(updatedUserData);
+  console.log(localStorage);
+
   return [resScore.reduce((accum, item) => accum + item, 0), corWords, topWords];
+}
+function saveUserToLocalStorage(userKey, userData) {
+  try {
+    localStorage.setItem(userKey, JSON.stringify(userData));
+    console.log(`Data for ${userKey} saved successfully.`);
+  } catch (error) {
+    console.error(`Failed to save data for ${userKey}:`, error);
+  }
 }
 
 export default manageScores;

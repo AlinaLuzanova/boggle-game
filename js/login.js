@@ -31,7 +31,7 @@ const sortedUsers = storedUsers.sort((a, b) => b.score - a.score);
 export function showSortedUsers() {
   let sortStr = '';
   for (let i = 0; i < sortedUsers.length; i++) {
-    sortStr += `\n${sortedUsers[i].name} ${sortedUsers[i].score}\n`;
+    sortStr += `\n${sortedUsers[i].name} ${sortedUsers[i].score.reduce((acum,item)=>acum+item,0)}\n`;
   }
   return sortStr;
 }

@@ -22,6 +22,12 @@ export const user3 = {
   allWords: [],
 };
 
-localStorage.setItem('user1', JSON.stringify(user1));
-localStorage.setItem('user2', JSON.stringify(user2));
-localStorage.setItem('user3', JSON.stringify(user3));
+function getFromLocalStorage(key){
+  if (!localStorage.getItem((key))){
+    localStorage.setItem(key, JSON.stringify(key));
+  }
+}
+
+getFromLocalStorage('user1');
+getFromLocalStorage('user2');
+getFromLocalStorage('user3');
